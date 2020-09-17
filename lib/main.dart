@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter App',
+      title: 'Embramaco',
       home: MyHomePage(),
     );
   }
@@ -35,7 +35,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter App'),
+        title: Text('Embramaco'),
       ),
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.start,
@@ -64,7 +64,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                   FlatButton(
                     child: Text('Add Pedido'),
-                    textColor: Colors.purple,
+                    textColor: Colors.grey,
                     onPressed: () {},
                   ),
                 ],
@@ -83,7 +83,7 @@ class MyHomePage extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Colors.purple,
+                          color: Colors.blueGrey[800],
                           width: 2,
                         ),
                       ),
@@ -93,7 +93,7 @@ class MyHomePage extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
-                          color: Colors.purple,
+                          color: Colors.indigo[900],
                         ),
                       ),
                     ),
