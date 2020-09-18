@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
-import './itens.dart';
+import 'models/itens.dart';
 
 void main() => runApp(MyApp());
 
@@ -33,15 +33,14 @@ class MyHomePage extends StatelessWidget {
     ),
   ];
 
-  final compostoInputController = TextEditingController();
-  final volumeInputController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xff001C4D),
         title: Text('Embramaco'),
       ),
+      backgroundColor: Colors.grey.shade200,
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -49,88 +48,70 @@ class MyHomePage extends StatelessWidget {
           Container(
             width: double.infinity,
             child: Card(
-              color: Colors.blue,
+              color: Color(0xffefff50),
               child: Text('CHART!'),
               elevation: 5,
             ),
           ),
-          Card(
-            elevation: 5,
-            child: Container(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Composto'),
-                    controller: compostoInputController,
+          Container(
+            margin: EdgeInsets.all(30),
+            child: Column(
+              children: pedidos.map((tx) {
+                return Card(
+                  elevation: 6,
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.symmetric(
+                          vertical: 10,
+                          horizontal: 15,
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Color(0xff001C4D),
+                            width: 2,
+                          ),
+                        ),
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          '${tx.composto}',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Color(0xff0C356D),
+                          ),
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            '${tx.volume}' + ' ton',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            DateFormat('yMEd', 'pt-br').format(tx.date),
+                            style: TextStyle(
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Volume'),
-                    controller: volumeInputController,
-                  ),
-                  FlatButton(
-                    child: Text('Add Pedido'),
-                    textColor: Colors.grey,
-                    onPressed: () {
-                      print(compostoInputController.text);
-                      print(volumeInputController.text);
-                    },
-                  ),
-                ],
-              ),
+                );
+              }).toList(),
             ),
           ),
-          Column(
-            children: pedidos.map((tx) {
-              return Card(
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 15,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.blueGrey[800],
-                          width: 2,
-                        ),
-                      ),
-                      padding: EdgeInsets.all(10),
-                      child: Text(
-                        '${tx.composto}',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: Colors.indigo[900],
-                        ),
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          '${tx.volume}',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          DateFormat('yMEd', 'pt-br').format(tx.date),
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              );
-            }).toList(),
-          ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xff001C4D),
+        child: Icon(Icons.add),
+        onPressed: () {},
       ),
     );
   }
