@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import './itens.dart';
 
@@ -8,6 +9,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    initializeDateFormatting('pt-br', null);
     return MaterialApp(
       title: 'Embramaco',
       home: MyHomePage(),
@@ -26,10 +28,13 @@ class MyHomePage extends StatelessWidget {
     Item(
       id: 'p2',
       composto: 'ET-129/7617',
-      volume: 20.000 ,
+      volume: 20.000,
       date: DateTime.now(),
     ),
   ];
+
+  final compostoInputController = TextEditingController();
+  final volumeInputController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -58,14 +63,19 @@ class MyHomePage extends StatelessWidget {
                 children: <Widget>[
                   TextField(
                     decoration: InputDecoration(labelText: 'Composto'),
+                    controller: compostoInputController,
                   ),
                   TextField(
                     decoration: InputDecoration(labelText: 'Volume'),
+                    controller: volumeInputController,
                   ),
                   FlatButton(
                     child: Text('Add Pedido'),
                     textColor: Colors.grey,
-                    onPressed: () {},
+                    onPressed: () {
+                      print(compostoInputController.text);
+                      print(volumeInputController.text);
+                    },
                   ),
                 ],
               ),
@@ -108,7 +118,7 @@ class MyHomePage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          DateFormat.yMMMd().format(tx.date),
+                          DateFormat('yMEd', 'pt-br').format(tx.date),
                           style: TextStyle(
                             color: Colors.grey,
                           ),
