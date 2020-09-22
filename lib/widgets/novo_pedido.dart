@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pedidosEmbramaco/widgets/show_checkBox.dart';
 
 class NovoPedido extends StatefulWidget {
   @override
@@ -19,10 +20,7 @@ class _NovoPedidoState extends State<NovoPedido> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            TextField(
-              decoration: InputDecoration(labelText: 'Composto'),
-              controller: compostoInputController,
-            ),
+            ShowCheckBox(),
             TextField(
               decoration: InputDecoration(labelText: 'Volume'),
               controller: volumeInputController,
