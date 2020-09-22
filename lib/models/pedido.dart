@@ -1,12 +1,12 @@
 import 'package:flutter/foundation.dart';
 
-class Item {
+class Pedido {
   final String id;
   final String composto;
   final double volume;
   final DateTime date;
 
-  Item({
+  Pedido({
     @required this.id,
     @required this.composto,
     @required this.volume,

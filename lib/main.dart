@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:pedidosEmbramaco/widgets/novo_pedido.dart';
 
-import 'models/itens.dart';
+import 'models/pedido.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,14 +19,14 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final List<Item> pedidos = [
-    Item(
+  final List<Pedido> pedidos = [
+    Pedido(
       id: 'p1',
       composto: 'ET-121/7138',
       volume: 30.000,
       date: DateTime.now(),
     ),
-    Item(
+    Pedido(
       id: 'p2',
       composto: 'ET-129/7617',
       volume: 20.000,
@@ -53,6 +54,7 @@ class MyHomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
+          NovoPedido(),
           Container(
             margin: EdgeInsets.all(30),
             child: Column(
